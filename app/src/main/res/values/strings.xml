@@ -1,0 +1,153 @@
+<resources>
+    <string name="app_name">Weather Food</string>
+
+    <!-- WEATHER CONDITION KEYWORD -->
+    <string name="wci_food_200">チヂミ</string>
+    <string name="wci_food_201">チヂミ</string>
+    <string name="wci_food_202">チヂミ</string>
+    <string name="wci_food_210">チヂミ</string>
+    <string name="wci_food_211">チヂミ</string>
+    <string name="wci_food_212">チヂミ</string>
+    <string name="wci_food_221">チヂミ</string>
+    <string name="wci_food_230">チヂミ</string>
+    <string name="wci_food_231">チヂミ</string>
+    <string name="wci_food_232">チヂミ</string>
+
+    <string name="wci_food_300">お好み焼き</string>
+    <string name="wci_food_301">お好み焼き</string>
+    <string name="wci_food_302">お好み焼き</string>
+    <string name="wci_food_310">お好み焼き</string>
+    <string name="wci_food_311">お好み焼き</string>
+    <string name="wci_food_312">お好み焼き</string>
+    <string name="wci_food_313">お好み焼き</string>
+    <string name="wci_food_314">お好み焼き</string>
+    <string name="wci_food_321">お好み焼き</string>
+
+    <string name="wci_food_500">チヂミ</string>
+    <string name="wci_food_501">チヂミ</string>
+    <string name="wci_food_502">チヂミ</string>
+    <string name="wci_food_503">チヂミ</string>
+    <string name="wci_food_504">チヂミ</string>
+    <string name="wci_food_511">チヂミ</string>
+    <string name="wci_food_520">チヂミ</string>
+    <string name="wci_food_521">チヂミ</string>
+    <string name="wci_food_522">チヂミ</string>
+    <string name="wci_food_531">チヂミ</string>
+
+    <string name="wci_food_600">鍋</string>
+    <string name="wci_food_601">鍋</string>
+    <string name="wci_food_602">鍋</string>
+    <string name="wci_food_611">鍋</string>
+    <string name="wci_food_612">鍋</string>
+    <string name="wci_food_615">鍋</string>
+    <string name="wci_food_616">鍋</string>
+    <string name="wci_food_620">鍋</string>
+    <string name="wci_food_621">鍋</string>
+    <string name="wci_food_622">鍋</string>
+
+    <string name="wci_food_701">焼肉</string>
+    <string name="wci_food_711">焼肉</string>
+    <string name="wci_food_721">焼肉</string>
+    <string name="wci_food_731">焼肉</string>
+    <string name="wci_food_741">焼肉</string>
+    <string name="wci_food_751">焼肉</string>
+    <string name="wci_food_761">焼肉</string>
+    <string name="wci_food_762">焼肉</string>
+    <string name="wci_food_771">焼肉</string>
+    <string name="wci_food_781">焼肉</string>
+
+    <string name="wci_food_800">BBQ</string>
+
+    <string name="wci_food_801">そば</string>
+    <string name="wci_food_802">そば</string>
+    <string name="wci_food_803">そば</string>
+    <string name="wci_food_804">そば</string>
+
+    <!-- WEATHER CONDITION ICON -->
+    <string name="wci_icon_200">11d</string>
+    <string name="wci_icon_201">11d</string>
+    <string name="wci_icon_202">11d</string>
+    <string name="wci_icon_210">11d</string>
+    <string name="wci_icon_211">11d</string>
+    <string name="wci_icon_212">11d</string>
+    <string name="wci_icon_221">11d</string>
+    <string name="wci_icon_230">11d</string>
+    <string name="wci_icon_231">11d</string>
+    <string name="wci_icon_232">11d</string>
+
+    <string name="wci_icon_300">09d</string>
+    <string name="wci_icon_301">09d</string>
+    <string name="wci_icon_302">09d</string>
+    <string name="wci_icon_310">09d</string>
+    <string name="wci_icon_311">09d</string>
+    <string name="wci_icon_312">09d</string>
+    <string name="wci_icon_313">09d</string>
+    <string name="wci_icon_314">09d</string>
+    <string name="wci_icon_321">09d</string>
+
+    <string name="wci_icon_500">10d</string>
+    <string name="wci_icon_501">10d</string>
+    <string name="wci_icon_502">10d</string>
+    <string name="wci_icon_503">10d</string>
+    <string name="wci_icon_504">10d</string>
+    <string name="wci_icon_511">13d</string>
+    <string name="wci_icon_520">09d</string>
+    <string name="wci_icon_521">09d</string>
+    <string name="wci_icon_522">09d</string>
+    <string name="wci_icon_531">09d</string>
+
+    <string name="wci_icon_600">13d</string>
+    <string name="wci_icon_601">13d</string>
+    <string name="wci_icon_602">13d</string>
+    <string name="wci_icon_611">13d</string>
+    <string name="wci_icon_612">13d</string>
+    <string name="wci_icon_615">13d</string>
+    <string name="wci_icon_616">13d</string>
+    <string name="wci_icon_620">13d</string>
+    <string name="wci_icon_621">13d</string>
+    <string name="wci_icon_622">13d</string>
+
+    <string name="wci_icon_701">50d</string>
+    <string name="wci_icon_711">50d</string>
+    <string name="wci_icon_721">50d</string>
+    <string name="wci_icon_731">50d</string>
+    <string name="wci_icon_741">50d</string>
+    <string name="wci_icon_751">50d</string>
+    <string name="wci_icon_761">50d</string>
+    <string name="wci_icon_762">50d</string>
+    <string name="wci_icon_771">50d</string>
+    <string name="wci_icon_781">50d</string>
+
+    <string name="wci_icon_800">01d</string>
+
+    <string name="wci_icon_801">02d</string>
+    <string name="wci_icon_802">03d</string>
+    <string name="wci_icon_803">04d</string>
+    <string name="wci_icon_804">04d</string>
+
+
+    <!-- 권한 화면 -->
+    <string name="permission_checking">권한 확인중...</string>
+    <string name="permission_setting_title">권한 설정</string>
+    <string name="permission_setting_message">앱을 실행하기 위해서는 권한 설정을 해야 합니다!</string>
+    <string name="permission_setting_restart">권한을 설정하고 다시 실행해주세요!</string>
+
+    <!-- 시작 화면 -->
+    <string name="index_message">최고의 음식점\n모두 모아\n베스트푸드</string>
+    <string name="delicious">Delicious</string>
+
+    <string name="submit">확인</string>
+    <string name="network_not_working">네크워크에 연결되어 있지 않습니다.\n확인후 다시 실행해주세요.</string>
+
+
+    <!-- 공통 -->
+    <string name="skip_string">...</string>
+
+    <string name="close">닫기</string>
+    <string name="cancel">취소</string>
+    <string name="setting">설정</string>
+    <string name="prev">이전</string>
+    <string name="next">다음</string>
+    <string name="complete">완료</string>
+
+</resources>
