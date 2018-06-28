@@ -3,13 +3,9 @@ package com.eatour.hyunjongkim.weatherfood;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.eatour.hyunjongkim.weatherfood.model.ImageInfoModel;
-import com.eatour.hyunjongkim.weatherfood.model.Profile;
 import com.eatour.hyunjongkim.weatherfood.model.item.ItemsImageItem;
-import com.eatour.hyunjongkim.weatherfood.model.item.ItemsImageItem$$Parcelable;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;

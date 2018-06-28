@@ -13,13 +13,13 @@
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/rejectBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:background="@drawable/ic_cancel"/>
         <ImageButton
             android:id="@+id/acceptBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_marginLeft="30dp"
             android:background="@drawable/ic_heart"/>
     </LinearLayout>

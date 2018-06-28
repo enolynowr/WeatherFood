@@ -2,9 +2,13 @@
 package com.eatour.hyunjongkim.weatherfood;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,7 +31,8 @@ import java.util.List;
 
 public class PermissionActivity extends AppCompatActivity {
     private static final int PERMISSION_MULTI_CODE = 100;
-
+    LocationManager locationManager;
+    Location location;
 
     /**
      * 화면을 구성하고 SDK 버전과 권한에 따른 처리를 한다.
@@ -47,6 +52,8 @@ public class PermissionActivity extends AppCompatActivity {
                 goIndexActivity();
             }
         }
+
+
     }
 
 
@@ -58,9 +65,8 @@ public class PermissionActivity extends AppCompatActivity {
 
     private boolean checkAndRequestPermissions() {
         String[] permissions = new String[]{
-                Manifest.permission.CAMERA,
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.ACCESS_FINE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.INTERNET
         };
 
         List<String> listPermissionsNeeded = new ArrayList<>();
@@ -78,6 +84,8 @@ public class PermissionActivity extends AppCompatActivity {
                     PERMISSION_MULTI_CODE);
             return false;
         }
+
+
 
         return true;
     }
@@ -184,4 +192,6 @@ public class PermissionActivity extends AppCompatActivity {
         intent.setData(uri);
         startActivity(intent);
     }
+
+
 }

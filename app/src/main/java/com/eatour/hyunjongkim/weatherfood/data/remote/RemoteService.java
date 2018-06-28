@@ -35,8 +35,6 @@ public interface RemoteService {
     String WEATHER_API_BASE_URL = "https://api.openweathermap.org/data/2.5/";
     String GOOGLE_IMAGE_API_BASE_URL = "https://www.googleapis.com/customsearch/v1/";
 
-    /*http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=b163330afcea03fe1c511ff3e76b5562*/
-
     //Weather API
     @GET("weather")
     Call<WeatherModel> getWeatherInfo(@Query("lat") double latitude,
@@ -52,8 +50,5 @@ public interface RemoteService {
                                       @Query("searchType") String searchType,
                                       @Query("q") String searchKeyWord,
                                       @Query("start") int start );
-
-
-    //https://www.googleapis.com/customsearch/v1?key=AIzaSyB7Dy56KtNdN4RURdAeJwAc-BpeaBxGaJU&cx=005080994123613126168:hwvodo2w-9a&searchType=image&q=キムチ&start=11
 
 }
