@@ -1,6 +1,5 @@
 package com.eatour.hyunjongkim.weatherfood.model.item;
 
-import com.google.gson.annotations.SerializedName;
 
 @org.parceler.Parcel
 public class ImageImageItem {

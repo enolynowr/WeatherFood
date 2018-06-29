@@ -2,8 +2,6 @@ package com.eatour.hyunjongkim.weatherfood.model.item;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 @org.parceler.Parcel
 public class ItemsImageItem {
 
@@ -15,6 +13,7 @@ public class ItemsImageItem {
     String snippet;
     String htmlSnippet;
     String mime;
+    @SerializedName("image")
     ImageImageItem imageImageItems;
 
     public String getKind() {

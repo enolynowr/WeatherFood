@@ -1,10 +1,6 @@
 package com.eatour.hyunjongkim.weatherfood.model;
 
-
-
-/**
- * 위치 정보를 저장하는 객체
- */
+// 位置情報の保存
 public class GeoModel {
     public static double knownLatitude;
     public static double knownLongitude;

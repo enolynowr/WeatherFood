@@ -2,9 +2,7 @@ package com.eatour.hyunjongkim.weatherfood;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,13 +39,14 @@ public class IndexActivity extends AppCompatActivity {
             showNoService();
             return;
         }
+
         if (GeoLib.getInstance().checkGPS(this)) {
             GeoLib.getInstance().setLastKnownLocation(this);
             startMain();
         }
     }
 
-
+    // ネットワークの接続ができないときのダイアログ（終了する）
     private void showNoService() {
         TextView messageText = findViewById(R.id.message);
         messageText.setVisibility(View.VISIBLE);

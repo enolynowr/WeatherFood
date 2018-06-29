@@ -24,45 +24,27 @@ import com.eatour.hyunjongkim.weatherfood.lib.MyToast;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * 앱을 실행할 때 필요한 권한을 처리하기 위한 액티비티
- */
-
+// アプリ実行の時の権限処理
 public class PermissionActivity extends AppCompatActivity {
     private static final int PERMISSION_MULTI_CODE = 100;
-    LocationManager locationManager;
-    Location location;
-
-    /**
-     * 화면을 구성하고 SDK 버전과 권한에 따른 처리를 한다.
-     *
-     * @param savedInstanceState 액티비티가 새로 생성되었을 경우, 이전 상태 값을 가지는 객체
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
 
+        // SDK Versionが　23以下の場合、権限要請なくIndexActivityに移動
         if (Build.VERSION.SDK_INT < 23) {
             goIndexActivity();
         } else {
+            // SDK Versionが　23以上の場合、権限要請後　➡　IndexActivity
             if (checkAndRequestPermissions()) {
                 goIndexActivity();
             }
         }
-
-
     }
 
-
-    /**
-     * 권한을 확인하고 권한이 부여되어 있지 않다면 권한을 요청한다.
-     *
-     * @return 필요한 권한이 모두 부여되었다면 true, 그렇지 않다면 false
-     */
-
+    // 権限の確認後、権限がない場合権限の要請（必要な権限全部あり：true）
     private boolean checkAndRequestPermissions() {
         String[] permissions = new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -85,23 +67,15 @@ public class PermissionActivity extends AppCompatActivity {
             return false;
         }
 
-
-
         return true;
     }
 
-
-    /**
-     * 권한 요청 결과를 받는 메소드
-     *
-     * @param requestCode  요청 코드
-     * @param permissions  권한 종류
-     * @param grantResults 권한 결과
-     */
-
+    // 権限要請の結果を受け取るメソッド
+    // requestCode  要請コード
+    // permissions  権限の種類
+    // grantResults 権限の結果
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                           int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (grantResults.length == 0) return;
 
         switch (requestCode) {
@@ -112,16 +86,9 @@ public class PermissionActivity extends AppCompatActivity {
         }
     }
 
-
-    /**
-     * 권한 처리 결과를 보고 인덱스 액티비티를 실행할 지,
-     * 권한 설정 요청 다이얼로그를 보여줄 지를 결정한다.
-     * 모든 권한이 승인되었을 경우에는 goIndexActivity() 메소드를 호출한다.
-     *
-     * @param permissions  권한 종류
-     * @param grantResults 권한 부여 결과
-     */
-
+    // 権限処理の結果によりIndexActivityの実行か権限設定の要請のダイアログを見せるかを決定
+    // permissions  権限の種類
+    // grantResults 権限の結果
     private void checkPermissionResult(String[] permissions, int[] grantResults) {
         boolean isAllGranted = true;
 
@@ -131,33 +98,24 @@ public class PermissionActivity extends AppCompatActivity {
             }
         }
 
-        //권한이 부여되었다면
+        // 権限全部あり
         if (isAllGranted) {
             goIndexActivity();
-
-            //권한이 부여되어 있지 않다면
         } else {
             showPermissionDialog();
         }
     }
 
-
-    /**
-     * 인덱스 액티비티를 실행하고 현재 액티비티를 종료한다.
-     */
-
+    // IndexActivityの実行
     private void goIndexActivity() {
         Intent intent = new Intent(this, IndexActivity.class);
         startActivity(intent);
 
+        //IndexActivityの実行後、Activityを終了させる
         finish();
     }
 
-
-    /**
-     * 권한 설정 화면으로 이동할 지를 선택하는 다이얼로그를 보여준다.
-     */
-
+    // 権限設定の画面に移動を選択するダイアログの表示
     private void showPermissionDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle(R.string.permission_setting_title);
@@ -180,11 +138,7 @@ public class PermissionActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
-    /**
-     * 권한을 설정할 수 있는 설정 액티비티를 실행한다.
-     */
-
+    // 権限が設定できるActivityを実行
     private void goAppSettingActivity() {
         Intent intent = new Intent();
         intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -192,6 +146,5 @@ public class PermissionActivity extends AppCompatActivity {
         intent.setData(uri);
         startActivity(intent);
     }
-
 
 }

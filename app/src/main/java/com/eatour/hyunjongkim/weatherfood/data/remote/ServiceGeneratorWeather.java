@@ -11,19 +11,11 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
-/**
- * 서버와 통신하기 위한 리트로핏을 사용하기 위한 클래스
- */
-
+// 天気APIのRetrofit
 public class ServiceGeneratorWeather {
 
-/**
-     * 원격 호출을 정의한 인터페이스 메소드를 호출할 수 있는 서비스를 생성
-     * @param serviceClass 원격 호출 메소드를 정의한 인터페이스
-     * @return 인터페이스 구현체
-     */
-
+    // Interface　メソッドを呼び出せるサービスを生成
+    // serviceClass: 遠隔呼び出しメソッドを定義したInterface
     public static <S> S createService(Class<S> serviceClass) {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         if (BuildConfig.DEBUG) {
@@ -39,16 +31,13 @@ public class ServiceGeneratorWeather {
                 .setLenient()
                 .create();
 
-
         Retrofit retrofitImage = new Retrofit.Builder()
                 .baseUrl(RemoteService.WEATHER_API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(httpClient.build())
                 .build();
 
+        // Interface 具現体
         return retrofitImage.create(serviceClass);
-
-
-
     }
 }

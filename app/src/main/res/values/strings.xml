@@ -126,28 +126,26 @@
     <string name="wci_icon_804">04d</string>
 
 
-    <!-- 권한 화면 -->
-    <string name="permission_checking">권한 확인중...</string>
-    <string name="permission_setting_title">권한 설정</string>
-    <string name="permission_setting_message">앱을 실행하기 위해서는 권한 설정을 해야 합니다!</string>
-    <string name="permission_setting_restart">권한을 설정하고 다시 실행해주세요!</string>
+    <!-- 権限関連 -->
+    <string name="permission_checking">権限確認中...</string>
+    <string name="permission_setting_title">権限設定</string>
+    <string name="permission_setting_message">アプリを実行するためには権限設定が必要です。</string>
+    <string name="permission_setting_restart">権限設定後、また実行してください。</string>
 
-    <!-- 시작 화면 -->
-    <string name="index_message">최고의 음식점\n모두 모아\n베스트푸드</string>
+    <!-- スタート関連 -->
+    <string name="index_message">天気\n人\nフード</string>
     <string name="delicious">Delicious</string>
+    <string name="submit">確認</string>
+    <string name="network_not_working">ネットワークに接続できませんでした.\nご確認後、実行してください。</string>
 
-    <string name="submit">확인</string>
-    <string name="network_not_working">네크워크에 연결되어 있지 않습니다.\n확인후 다시 실행해주세요.</string>
-
-
-    <!-- 공통 -->
+    <!-- 共通 -->
     <string name="skip_string">...</string>
-
-    <string name="close">닫기</string>
-    <string name="cancel">취소</string>
-    <string name="setting">설정</string>
-    <string name="prev">이전</string>
-    <string name="next">다음</string>
-    <string name="complete">완료</string>
+    <string name="cancel">キャンセル</string>
+    <string name="setting">設定</string>
+    <string name="complete">完了</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="title_gps_check_dialog">GPS チェック</string>
+    <string name="msg_gps_check_dialog">アプリを使用するためにはGPSの機能が必要です。\nGPSをオンにしますか？</string>
 
 </resources>

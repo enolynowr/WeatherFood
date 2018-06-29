@@ -2,7 +2,9 @@ package com.eatour.hyunjongkim.weatherfood;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.eatour.hyunjongkim.weatherfood.model.item.ItemsImageItem;
@@ -19,10 +21,12 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 @Layout(R.layout.sky_food_card_view)
 public class SkyFoodCard {
 
-    @View(R.id.profileImageView)
+    @View(R.id.foodImageView)
     private ImageView profileImageView;
     @View(R.id.wci_icon)
     private ImageView wciIconIv;
+    @View(R.id.btn_detail)
+    private TextView tv;
     private String wciIconUrl;
     private ItemsImageItem itemsImageItem;
     private Context mContext;
@@ -39,14 +43,13 @@ public class SkyFoodCard {
     private void onResolved() {
         Glide.with(mContext).load(itemsImageItem.getLink()).into(profileImageView);
         Glide.with(mContext).load(wciIconUrl).into(wciIconIv);
-
+        tv.setText(itemsImageItem.getImageImageItems().getContextLink());
     }
 
     @SwipeOut
     private void onSwipedOut() {
         Log.d("EVENT", "onSwipedOut");
         mSwipeView.addView(this);
-
     }
 
     @SwipeCancelState

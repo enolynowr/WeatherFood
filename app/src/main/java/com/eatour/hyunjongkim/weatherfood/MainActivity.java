@@ -9,8 +9,8 @@ import com.eatour.hyunjongkim.weatherfood.data.remote.RemoteService;
 import com.eatour.hyunjongkim.weatherfood.data.remote.ServiceGeneratorImage;
 import com.eatour.hyunjongkim.weatherfood.data.remote.ServiceGeneratorWeather;
 import com.eatour.hyunjongkim.weatherfood.lib.MyLog;
+import com.eatour.hyunjongkim.weatherfood.lib.MyToast;
 import com.eatour.hyunjongkim.weatherfood.model.GeoModel;
-import com.eatour.hyunjongkim.weatherfood.model.ImageInfoModel;
 import com.eatour.hyunjongkim.weatherfood.model.ImageModel;
 import com.eatour.hyunjongkim.weatherfood.model.WeatherModel;
 import com.eatour.hyunjongkim.weatherfood.model.item.ItemsImageItem;
@@ -23,12 +23,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+    public final String TAG = MainActivity.class.getSimpleName();
     private int CURRENT_WEATHER_CONDITION_ID = 0;
     String wciIconUrl;
     private SwipePlaceHolderView mSwipeView;
     private Context mContext;
-    ImageInfoModel imageInfoModel;
     String keyWordForImageSearch;
     int startIndexCnt = 1;
 
@@ -39,14 +38,12 @@ public class MainActivity extends AppCompatActivity {
         mSwipeView = findViewById(R.id.swipeView);
         mContext = getApplicationContext();
 
-
         getWeatherInfo(GeoModel.knownLatitude, GeoModel.knownLongitude, RemoteService.WEATHER_API_KEY, startIndexCnt);
 
         settingSwipeHolderView();
-
     } // onCreate End
 
-
+    //WeatherAPIの呼出し後、ImageAPIの呼び出し
     private void getWeatherInfo(double lat, double lon, String appId, int _startIndexCnt) {
         RemoteService remoteService = ServiceGeneratorWeather.createService(RemoteService.class);
         Call<WeatherModel> call = remoteService.getWeatherInfo(lat, lon, appId);
@@ -69,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<WeatherModel> call, Throwable t) {
+                MyToast.l(getApplicationContext(), "ネットワークの状態が悪いです。\n もう一度確認してください。");
+                MyLog.d(TAG,"WEATHER API ERROR");
             }
         });
 
@@ -82,24 +81,21 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ImageModel>() {
             @Override
             public void onResponse(Call<ImageModel> call, Response<ImageModel> response) {
-
                 ImageModel imageModel = response.body();
-                imageInfoModel = new ImageInfoModel();
 
                 for (ItemsImageItem itemsImageItem : imageModel.getItemsImageItem()) {
                     mSwipeView.addView(new SkyFoodCard(mContext, itemsImageItem, mSwipeView, wciIconUrl));
                 }
-
             }
 
             @Override
             public void onFailure(Call<ImageModel> call, Throwable t) {
-                t.getStackTrace();
+                MyToast.l(getApplicationContext(), "ネットワークの状態が悪いです。\n もう一度確認してください。");
+                MyLog.d(TAG,"IMAGE API ERROR");
             }
         });
 
     }
-
 
     // values/strings.xmlから画像検索キーワードを抽出
     private String getKeyword(int _weatherConditionId) {
@@ -110,11 +106,10 @@ public class MainActivity extends AppCompatActivity {
         return proSearchKeyWord;
     }
 
-    // wci Icon アドレスの生成
+    // WEATHER CONDITION ID URLの生成
     private String getIconIdURL(int _weatherConditionId) {
         String iconIdURL = "http://openweathermap.org/img/w/";
-        String preIconStr = "wci_icon_";
-        String WholeWeatherIconStr = preIconStr + String.valueOf(_weatherConditionId);
+        String WholeWeatherIconStr = Constants.WEATHER_ICON_ID_PRE_WORD + String.valueOf(_weatherConditionId);
         int iconIdStr = getResources().getIdentifier(WholeWeatherIconStr, "string", getPackageName());
         String proWeatherIconId = getResources().getString(iconIdStr);
         iconIdURL = iconIdURL + proWeatherIconId + ".png";
@@ -152,7 +147,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemRemoved(int count) {
                 MyLog.d("onItemRemoved", ">>>" + count);
 
+                // 画像が0になったらAPIを呼び出す
                 if (count == 0) {
+                    // スタートインデックスに10をたして呼ぶ
                     startIndexCnt = startIndexCnt + 10;
                     getWeatherInfo(GeoModel.knownLatitude, GeoModel.knownLongitude, RemoteService.WEATHER_API_KEY, startIndexCnt);
                 }
