@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weather Food</string>
+    <string name="app_name">天食</string>
 
     <!-- WEATHER CONDITION KEYWORD -->
     <string name="wci_food_200">チヂミ</string>
@@ -56,7 +56,7 @@
     <string name="wci_food_771">焼肉</string>
     <string name="wci_food_781">焼肉</string>
 
-    <string name="wci_food_800">BBQ</string>
+    <string name="wci_food_800">ケーキ</string>
 
     <string name="wci_food_801">そば</string>
     <string name="wci_food_802">そば</string>
@@ -145,7 +145,10 @@
     <string name="complete">完了</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
-    <string name="title_gps_check_dialog">GPS チェック</string>
+    <string name="title_gps_check_dialog">GPS</string>
     <string name="msg_gps_check_dialog">アプリを使用するためにはGPSの機能が必要です。\nGPSをオンにしますか？</string>
+
+    <!-- ダイアログ -->
+    <string name="title_network_error">ネットワークエラー</string>
 
 </resources>

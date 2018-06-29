@@ -11,7 +11,7 @@
     <style name="SplashTheme" parent="AppTheme">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="android:windowBackground">@drawable/tenshoku_logo_fin</item>
+        <item name="android:windowBackground">@drawable/bg_index</item>
     </style>
 
 </resources>

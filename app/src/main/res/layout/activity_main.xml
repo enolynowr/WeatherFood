@@ -15,13 +15,13 @@
             android:id="@+id/rejectBtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="@drawable/ic_cancel"/>
+            android:background="@drawable/chevron_sign_left"/>
         <ImageButton
             android:id="@+id/acceptBtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/ic_heart"/>
+            android:background="@drawable/chevron_sign_to_right"/>
     </LinearLayout>
     <com.mindorks.placeholderview.SwipePlaceHolderView
         android:id="@+id/swipeView"

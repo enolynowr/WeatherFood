@@ -10,7 +10,10 @@ import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 
+import com.eatour.hyunjongkim.weatherfood.IndexActivity;
+import com.eatour.hyunjongkim.weatherfood.PermissionActivity;
 import com.eatour.hyunjongkim.weatherfood.R;
 import com.eatour.hyunjongkim.weatherfood.model.GeoModel;
 
@@ -72,7 +75,6 @@ public class GeoLib {
 
     // GPS要求のダイアログ
     private void showDialog(Context context) {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(context.getResources().getString(R.string.title_gps_check_dialog));
         builder.setMessage(context.getResources().getString(R.string.msg_gps_check_dialog));
@@ -88,6 +90,9 @@ public class GeoLib {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        context.startActivity(intent);
                     }
                 });
 

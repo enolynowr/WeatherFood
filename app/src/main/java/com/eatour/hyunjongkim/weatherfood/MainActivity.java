@@ -1,6 +1,9 @@
 package com.eatour.hyunjongkim.weatherfood;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +13,7 @@ import com.eatour.hyunjongkim.weatherfood.data.remote.ServiceGeneratorImage;
 import com.eatour.hyunjongkim.weatherfood.data.remote.ServiceGeneratorWeather;
 import com.eatour.hyunjongkim.weatherfood.lib.MyLog;
 import com.eatour.hyunjongkim.weatherfood.lib.MyToast;
+import com.eatour.hyunjongkim.weatherfood.lib.RemoteLib;
 import com.eatour.hyunjongkim.weatherfood.model.GeoModel;
 import com.eatour.hyunjongkim.weatherfood.model.ImageModel;
 import com.eatour.hyunjongkim.weatherfood.model.WeatherModel;
@@ -31,10 +35,13 @@ public class MainActivity extends AppCompatActivity {
     String keyWordForImageSearch;
     int startIndexCnt = 1;
 
+    ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        showProgressDialog();
         mSwipeView = findViewById(R.id.swipeView);
         mContext = getApplicationContext();
 
@@ -74,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // ImageのAPI処理
+    // ImageAPIの一日に呼ぶ制限有
     private void getImageInfoFromGoogle(String key, String cx, String searchType, String searchKeyWord, int start) {
         RemoteService remoteService = ServiceGeneratorImage.createService(RemoteService.class);
         Call<ImageModel> call = remoteService.getImageInfo(key, cx, searchType, searchKeyWord, start);
@@ -83,8 +91,18 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ImageModel> call, Response<ImageModel> response) {
                 ImageModel imageModel = response.body();
 
+                if (imageModel == null){
+                    networkErrorDialog();
+                    MyLog.d(TAG, ">>> imageModel null");
+                    return;
+                }
+
                 for (ItemsImageItem itemsImageItem : imageModel.getItemsImageItem()) {
                     mSwipeView.addView(new SkyFoodCard(mContext, itemsImageItem, mSwipeView, wciIconUrl));
+                }
+
+                if (dialog.isShowing()){
+                    dialog.dismiss();
                 }
             }
 
@@ -130,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSwipeView.doSwipe(false);
+                mSwipeView.doSwipe(true);
             }
         });
 
@@ -149,12 +167,40 @@ public class MainActivity extends AppCompatActivity {
 
                 // 画像が0になったらAPIを呼び出す
                 if (count == 0) {
+                    // インターネット接続確認
+                    if (!RemoteLib.getInstance().isConnected(getApplicationContext())) {
+                        networkErrorDialog();
+                        return;
+                    }
                     // スタートインデックスに10をたして呼ぶ
                     startIndexCnt = startIndexCnt + 10;
+                    dialog.show();
                     getWeatherInfo(GeoModel.knownLatitude, GeoModel.knownLongitude, RemoteService.WEATHER_API_KEY, startIndexCnt);
                 }
             }
         });
 
+    } // settingSwipeHolderView end
+
+    private void networkErrorDialog() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle(R.string.title_network_error);
+        dialog.setMessage(R.string.network_not_working);
+        dialog.setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                finish();
+            }
+        });
+
+        dialog.show();
     }
+
+    private void showProgressDialog() {
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("今日の天気に\n最適な食べ物を探しています。。");
+        dialog.show();
+    }
+
 }

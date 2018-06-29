@@ -40,7 +40,7 @@ public class IndexActivity extends AppCompatActivity {
             return;
         }
 
-        if (GeoLib.getInstance().checkGPS(this)) {
+        if (GeoLib.getInstance().checkGPS(context)) {
             GeoLib.getInstance().setLastKnownLocation(this);
             startMain();
         }
