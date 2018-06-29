@@ -30,7 +30,7 @@ import retrofit2.http.Query;
 
 public interface RemoteService {
 
-    String WEATHER_API_KEY = "b163330afcea03fe1c511ff3e76b5562";
+    String WEATHER_API_KEY = "";
 
     String WEATHER_API_BASE_URL = "https://api.openweathermap.org/data/2.5/";
     String GOOGLE_IMAGE_API_BASE_URL = "https://www.googleapis.com/customsearch/v1/";
